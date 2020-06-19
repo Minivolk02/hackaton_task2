@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="invalid-feedback d-block">
+        {{ form.non_field_errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Username</label>
+        {{ form.username }}
+        <div class="invalid-feedback d-block">
+            {{ form.username.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.first_name.id_for_label }}">Имя</label>
+        {{ form.first_name }}
+        <div class="invalid-feedback d-block">
+            {{ form.first_name.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
+        {{ form.last_name }}
+        <div class="invalid-feedback d-block">
+            {{ form.last_name.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.middle_name.id_for_label }}">Отчество</label>
+        {{ form.middle_name }}
+        <div class="invalid-feedback d-block">
+            {{ form.middle_name.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.birth_date.id_for_label }}">Дата Рождения</label>
+        {{ form.birth_date }}
+        <div class="invalid-feedback d-block">
+            {{ form.birth_date.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        {{ form.email }}
+        <div class="invalid-feedback d-block">
+            {{ form.email.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.password1.id_for_label }}">Введите пароль</label>
+        {{ form.password1 }}
+        <div class="invalid-feedback d-block">
+            {{ form.password1.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.password2.id_for_label }}">Подвердите пароль</label>
+        {{ form.password2 }}
+        <div class="invalid-feedback d-block">
+            {{ form.password2.errors }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+</form>
+{% endblock %}

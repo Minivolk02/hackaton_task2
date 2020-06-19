@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+{% if idea_item %}
+<div class="card mb-3">
+    <div class="card-header">
+        <h2 class="font-weight-bold">{{ idea_item.title }}</h2>
+    </div>
+    <div class="card-body">
+        <div class="media">
+            <div class="media-body">
+                <p class="card-text">{{ idea_item.content|safe }}</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-footer text-muted">
+        Опубликовано : {{ idea_item.date|timesince }} назад.
+    </div>
+</div>
+{% endif %}
+{% endblock %}
