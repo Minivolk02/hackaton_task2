@@ -7,8 +7,9 @@ from vote.models import VoteModel
 
 User = get_user_model()
 
+
 class Idea(VoteModel, models.Model):
-    user = models.ForeignKey(User, models.CASCADE, verbose_name='Отправитель', blank=True, unique=False)
+    user = models.ForeignKey(User, models.CASCADE, verbose_name='Отправитель', blank=True, unique=False, default=1)
     title = models.CharField(max_length=50, verbose_name='Название идеи')
     slug = models.SlugField(max_length=10, verbose_name='Тэг идеи')
     content = RichTextUploadingField(verbose_name='Контент идеи')
@@ -27,6 +28,8 @@ class Idea(VoteModel, models.Model):
     def get_score(self):
         return self.votes.count()
 
+    get_score.short_description = 'Количество голосов'
+
     def check_votes(self, request):
         return self.votes.exists(request.user.id)
 
@@ -35,3 +38,13 @@ class Idea(VoteModel, models.Model):
     class Meta:
         verbose_name = 'Идея'
         verbose_name_plural = 'Идеи'
+
+
+class GroupTags(models.Model):
+    title = models.SlugField(max_length=50)
+
+    class Meta:
+        verbose_name = ''
+
+    def __str__(self):
+        return self.title

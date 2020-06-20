@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load comments comments_xtd %}
 {% block sidebar %}
 {% include 'inc/_sidebar.html' %}
 {% endblock %}
@@ -18,6 +18,9 @@
         </div>
 
     </div>
+    <ul class="media-list">
+        {% render_xtdcomment_tree for idea_item allow_flagging allow_feedback show_feedback %}
+    </ul>
     <div class="card-footer text-muted">
         Опубликовано : {{ idea_item.date|timesince }} назад.
     </div>

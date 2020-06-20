@@ -8,7 +8,6 @@ from django.contrib import messages
 
 class IndexView(ListView):
     paginate_by = 3
-    model = Idea
     template_name = 'crm/index.html'
     context_object_name = 'idea'
 
@@ -16,11 +15,11 @@ class IndexView(ListView):
         return Idea.objects.filter(is_published=True)
 
 
-
 class ListIdeas(DetailView):
     model = Idea
     template_name = 'crm/idea_item.html'
     context_object_name = 'idea_item'
+
 
 @login_required
 def add_idea(request):
@@ -34,6 +33,7 @@ def add_idea(request):
     else:
         form = IdeaForm()
     return render(request, 'crm/add_idea.html', {'form': form})
+
 
 @login_required
 def add_golos(request):
