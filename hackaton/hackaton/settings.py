@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_comments_xtd',
     'django_comments',
+    'taggit',
     'vote',
     'ckeditor',
     'ckeditor_uploader',

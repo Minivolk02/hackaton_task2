@@ -4,6 +4,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from vote.models import VoteModel
+from taggit.managers import TaggableManager
 
 User = get_user_model()
 
@@ -15,6 +16,7 @@ class Idea(VoteModel, models.Model):
     content = RichTextUploadingField(verbose_name='Контент идеи')
     date = models.DateTimeField(verbose_name='Дата публикации', default=timezone.now, blank=True)
     is_published = models.BooleanField(verbose_name='Опубликовано?', default=True)
+    tags = TaggableManager(verbose_name='Тэги групп', blank=True)
 
     def __str__(self):
         return self.title
@@ -38,13 +40,3 @@ class Idea(VoteModel, models.Model):
     class Meta:
         verbose_name = 'Идея'
         verbose_name_plural = 'Идеи'
-
-
-class GroupTags(models.Model):
-    title = models.SlugField(max_length=50)
-
-    class Meta:
-        verbose_name = ''
-
-    def __str__(self):
-        return self.title

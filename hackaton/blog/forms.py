@@ -27,5 +27,6 @@ class CommentFormWithTitle(XtdCommentForm):
 
     def get_comment_create_data(self, **kwargs):
         data = super(CommentFormWithTitle, self).get_comment_create_data()
+        print(data)
         data.update({'comment': self.cleaned_data['comment']})
         return data

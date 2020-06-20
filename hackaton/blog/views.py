@@ -1,18 +1,22 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import View, ListView, DetailView
 from .models import *
+from django.core.paginator import Paginator
+from django.template.defaultfilters import slugify
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 
-class IndexView(ListView):
-    paginate_by = 3
-    template_name = 'crm/index.html'
-    context_object_name = 'idea'
+def index_view(request):
+    ideas = Idea.objects.filter(is_published=True)
 
-    def get_queryset(self):
-        return Idea.objects.filter(is_published=True)
+    paginator = Paginator(ideas, 3)  # Show 25 contacts per page.
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'crm/index.html', {'page_obj': page_obj, 'idea': ideas})
 
 
 class ListIdeas(DetailView):
