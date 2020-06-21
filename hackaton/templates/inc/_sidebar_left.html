@@ -1,0 +1,76 @@
+{% load static %}
+<div class="bar" id="leftBar">
+    <div class="l_bar">
+        <div class="up_l_bar" id="up_l_bar_id">
+            <p class="bar_center" id="logo_bar_id">
+                <a href="{% url 'home' %}">
+                    <img class="logo_bar" src="{% static 'img/icon-gpb-blue.svg' %}">
+                </a>
+            </p>
+            <p class="bar_center" id="ph_bar_id">
+                {% if not request.user.is_anonymous %}
+                    {% if request.user.avatar %}
+                    <img class="ph_bar" src="{{ request.user.avatar.url }}">
+                    {% endif %}
+                {% endif %}
+            </p>
+        </div>
+        <div class="centr_l_bar">
+            <div class="centr_l_bar_v">
+                <p class="bar_center" id="ideas_bar_id">
+                    <img class="ideas_bar" src="{% static 'img/idea.png' %}">
+                </p>
+                <p class="bar_center" id="group_bar_id">
+                    <img class="group_bar" src="{% static 'img/target.png' %}">
+                </p>
+                <p class="bar_center" id="pr_bar_id">
+                    <img class="pr_bar" src="{% static 'img/user.png' %}">
+                </p>
+                <p class="bar_center" id="add_bar_id">
+                    <img class="add_bar" src="{% static 'img/user.png' %}">
+                </p>
+            </div>
+        </div>
+        <div class="b_l_bar">
+            <p class="bar_center" id="bar_set_id">
+                <img class="set_bar" src="{% static 'img/gear.png' %}" width="60%">
+            </p>
+        </div>
+
+        <div id="leftBarClose" class="leftDinamic">
+        </div>
+    </div>
+
+    <div id="leftBarClose" class="leftBarDinamic">
+        <form method="post">
+            {% csrf_token %}
+            <div id="headLeftBarConsole">
+                {{ form.search }}
+                <button id="btnAdd">Искать</button>
+            </div>
+        </form>
+        <hr class="hr-shelf">
+        <div id="groupContainer">
+            {% for item in departs %}
+            <a href="?groups={{ item.title }}">
+                <div class="group-card-preview">
+                    <div class="group-card-left-part">
+                        <img class="group-card-icon" src="{{ item.photo.url }}">
+                    </div>
+                    <div class="group-card-right-part">
+                        <div class="group-title">
+                            {{ item.title }}
+                        </div>
+                        <div class="group-discription">
+                            {{ item.description|linebreaks|truncatewords:15 }}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div id="ButtForCloseLeftBar" class="ButtForOpenBar"><img class="interact-left-bar"
+                                                                  src="{% static 'img/next_m.png' %}"></div>
+    </div>
+</div>

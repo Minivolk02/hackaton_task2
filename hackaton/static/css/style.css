@@ -1,0 +1,404 @@
+*{
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+div{
+    display: block;
+}
+body{
+
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+
+    display: grid;
+    grid-template-areas: "leftBar mainContainer rightBar";
+    grid-template-columns:  5% 1fr 5%;
+    grid-template-rows: 1fr;
+}
+
+#leftBar{
+    grid-area: leftBar;
+}
+#rightBar{
+    grid-area: rightBar;
+
+}
+.bar{
+
+    height: 100vh;
+}
+
+#mainContainer{
+    grid-area: mainContainer;
+    height: 100vh;
+
+    overflow: auto;
+    height: 94vh;
+    z-index: 1;
+}
+
+.leftBarDinamic{
+    height: 100%;
+    background: #4d4d4d;
+    float: left;
+    width: 0px;
+    margin-top: -100vh;
+    z-index: 1000;
+}
+
+#leftBarOpen{
+    position: relative;
+    left: 100%;
+    transition: left ease 0.2s;
+    width: 20vw;
+}
+
+#leftBarClose{
+    left: -350px;
+    transition: left ease 0.2s;
+}
+.rightBarDinamic{
+    height: 100%;
+    background: #4d4d4d;
+    float: right;
+    width: 0px;
+    margin-top: -100vh;
+    z-index:1000;
+}
+
+#rightBarOpen{
+    position: relative;
+    right: 100%;
+    transition: left ease 0.2s;
+    width: 20vw;
+}
+
+#rightBarClose{
+    right: -350px;
+    transition: left ease 0.2s;
+}
+
+.l_bar{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #343434;
+    float: left;
+}
+#r_bar_id{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #343434;
+    float: right;
+}
+
+#headLeftBarConsole{
+
+    width: 100%;
+    display: grid;
+    grid-template-areas: "input input input butt";
+    grid-template-columns:  25% 25% 25% 25%;
+    grid-template-rows: 75px;
+}
+.labelInLeftBar{
+    grid-area: input;
+}
+#btnAdd{
+    grid-area: butt;
+}
+#Rbut1{
+    grid-area: but1;
+}
+#Rbut2{
+    grid-area: but2;
+}
+#Rbut3{
+    grid-area: but3;
+}
+#Rbut4{
+    grid-area: but4;
+}
+.hr-shelf {
+    margin: -30px auto 10px;
+    padding: 0;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #1f1209;
+    box-shadow: 0 20px 20px -20px #333;
+    width: 95%;
+}
+
+.form_radio_btn{
+
+}
+
+
+.labelInLeftBar{
+    border: none;
+    height:25px;
+    width: 65%;
+    padding:6px 15px;
+    margin: 7%;
+
+    border-radius:5px;
+    -moz-transition: padding .25s;
+    -webkit-transition: padding .25s;
+    -o-transition: padding .25s;
+    transition: padding .25s;
+    background: #222222;
+    color: #aaaaaa;
+    display: block;
+
+}
+.labelInLeftBar:focus {
+    background: #fff;
+    }
+
+#btnAdd{
+    width: 55px;
+    height: 38px;
+    margin: 10%;
+    margin-top: 22%;
+
+    position: relative;
+
+
+    font-size: 90%;
+    font-weight: 700;
+    color: rgb(209,209,217);
+    text-decoration: none;
+    border: none;
+    padding: .5em 1em;
+    outline: none;
+    border-radius: 6px;
+    background: linear-gradient(rgb(5, 142, 197), rgb(38, 115, 153)) rgb(9, 185, 206);
+
+    transition: .2s ease-in-out;
+}
+
+
+
+
+
+.lebel2InLeftBar{
+    background: #ff00b5;
+    margin:10%;
+    width:80%;
+    height: 25px;
+}
+
+#btnsort{
+    width: 35px;
+    height: 35px;
+    margin: 15%;
+    margin-top:7%;
+    margin-left: 57%;
+    border: none;
+    position: relative;
+    display: inline-block;
+    font-size: 90%;
+    font-weight: 700;
+    color: rgb(209,209,217);
+    text-decoration: none;
+    padding: .5em 1em;
+    outline: none;
+    border-radius: 6px;
+    background: linear-gradient(rgb(5, 142, 197), rgb(38, 115, 153)) rgb(9, 185, 206);
+
+    transition: .2s ease-in-out;
+}
+
+
+
+#groupContainer {
+    height: 90%;
+    overflow: auto;
+}
+
+.MyGroup{
+    width:90%;
+    margin:5%;
+    height:10%;
+    background: #222222;
+    border-radius: 9px;
+}
+
+.h1ForGroup{
+    color: #eee;
+}
+
+
+
+.form_radio_btn {
+    display: inline-block;
+    margin-right: -10px;
+    margin-left: 10%;
+    width: 60%;
+}
+.form_radio_btn input[type=radio] {
+    display: none;
+}
+.form_radio_btn label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0px 8px;
+    line-height: 34px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    user-select: none;
+    width: 100%;
+
+}
+
+/* Checked */
+.form_radio_btn input[type=radio]:checked + label {
+    background: #ffe0a6;
+    color:#222222;
+}
+
+/* Hover */
+.form_radio_btn label:hover {
+    color: #666;
+}
+
+/* Disabled */
+.form_radio_btn input[type=radio]:disabled + label {
+    background: #efefef;
+    color: #666;
+}
+
+.ButtForOpenBar{
+    width:15px;
+    height:80px;
+    background: greenyellow;
+    z-index: 1000;
+    position: relative;
+
+}
+
+#ButtForCloseLeftBar{
+    margin-top:20vh;
+    z-index: 1000;
+}
+
+#ButtForOpenLeftBar{
+    margin-left: 20vw;
+    margin-top: -80vh;
+    z-index: 1000;
+}
+
+.signal{
+    width: 85%;
+    margin:5%;
+    height:28%;
+    background: #aaaaaa;
+    border-radius: 10px;
+    padding: 2%;
+
+}
+h3 {
+    margin: 1em 0 0.5em 0;
+    color: black;
+    font-size: 19px;
+    line-height: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Orienta', sans-serif;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+h4 {
+    margin: 1em 0 0.5em 0;
+    color: black;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: normal;
+    font-family: 'Orienta', sans-serif;
+}
+
+h1 {
+    font-size: 26px;
+    line-height: 33px;
+    margin: 1em 0 .6em 0;
+    font-weight: bold;
+    text-align: center;
+    color: #eeeeee;
+    font-family: 'Hammersmith One', sans-serif;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    position: relative;
+    height: 5%;
+
+}
+#h1ForMainContPub{
+    font-size: 29px;
+    color:#222222;
+    height: auto;
+    line-height: 50px;
+
+}
+
+#ConteinerForSignal{
+    height: 83%;
+    overflow: auto;
+}
+
+#closeLeftBar{
+    width: 25px;
+    height: 25px;
+    background: red;
+    margin-left: -10px;
+    position: relative;
+}
+
+
+
+.publicathion{
+    width:80%;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 39%;
+    background: #eeeeee;
+    border-radius: 30px;
+    display: grid;
+    grid-template-areas: "img title title title"
+                          "img text text text"
+                          "img avtor data button";
+    grid-template-columns:  25% 25% 25% 25%;
+    grid-template-rows: 30% 1fr 20%;
+}
+
+.imgPub{
+    grid-area: img;
+    height: 90%;
+    margin: 5%;
+    border-radius: 28px;
+    margin: 5% auto;
+    overflow: hidden;
+    width: 90%;
+    height: 90%;
+
+}
+.titlePub{
+    grid-area: title;
+    color: black;
+    text-align: left;
+}
+.textPub{
+    grid-area: text;
+}
+.avtorPub{
+    grid-area: avtor;
+}
+.dataPub{
+    grid-area: data;
+
+}
+.buttonPub{
+    grid-area: button;
+}
+
+.h3ForPub{
+    line-height: 0px;
+}

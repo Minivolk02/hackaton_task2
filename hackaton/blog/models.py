@@ -4,19 +4,30 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from vote.models import VoteModel
-from taggit.managers import TaggableManager
-
+from accounts.models import Department
+from django_comments_xtd.models import XtdComment
 User = get_user_model()
+
+
+class CommentOwnModel(XtdComment):
+    commentary = models.CharField(verbose_name='Комментарий', max_length=500)
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Коментарии'
 
 
 class Idea(VoteModel, models.Model):
     user = models.ForeignKey(User, models.CASCADE, verbose_name='Отправитель', blank=True, unique=False, default=1)
-    title = models.CharField(max_length=50, verbose_name='Название идеи')
-    slug = models.SlugField(max_length=10, verbose_name='Тэг идеи')
+    title = models.CharField(max_length=100, verbose_name='Название идеи')
+    slug = models.SlugField(max_length=100, verbose_name='Тэг идеи')
     content = RichTextUploadingField(verbose_name='Контент идеи')
     date = models.DateTimeField(verbose_name='Дата публикации', default=timezone.now, blank=True)
     is_published = models.BooleanField(verbose_name='Опубликовано?', default=True)
-    tags = TaggableManager(verbose_name='Тэги групп', blank=True)
+    views = models.PositiveIntegerField(default=0, verbose_name='Просмотры', blank=True)
+    question = models.CharField(max_length=100, verbose_name='Вопрос', null=True)
+    groups = models.ForeignKey(Department, on_delete=models.CASCADE, null=True)
+    photo = models.ImageField(upload_to='ideas/', verbose_name='Фото', null=True)
 
     def __str__(self):
         return self.title

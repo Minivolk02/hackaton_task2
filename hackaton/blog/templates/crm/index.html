@@ -1,79 +1,21 @@
 {% extends 'base.html' %}
-{% load vote %}
-{% load static %}
-{% load comments comments_xtd %}
-{% block sidebar %}
-{% include 'inc/_sidebar.html' %}
-{% endblock %}
-
+{% load comments vote %}
 {% block content %}
-{% if idea %}
 {% for item in idea %}
-{% vote_exists item request.user 0 as vote_up %}
 {% get_comment_count for item as comment_count %}
-<div class="py-4 text-center">
-    &nbsp;&sdot;&nbsp;
-    {{ comment_count }} comment{{ comment_count|pluralize }}
-    ha{{ comment_count|pluralize:"s,ve" }} been posted.
-</div>
-
-<div class="card mb-3">
-    <div class="card-header">
-        <h2 class="font-weight-bold">{{ item.title }}</h2>
-        <h3 class="card-text">Проголосовало: {{ item.votes.count }}</h3>
+{% vote_exists item request.user 0 as vote_up %}
+<h1 id="h1ForMainContPub">{{ item.groups }}</h1>
+<div class="publicathion">
+    <img src="{{ item.photo.url }}" class="imgPub">
+    <h1 class="titlePub">{{ item.title }} <span class="iki" style="color:#0e8dea;">IKI: {{ item.views }} + {{ comment_count }} + {{ item.votes.count }}</span></h1>
+    <div class="textPub">
+        {{ item.content|safe|linebreaks|truncatewords:100 }}
     </div>
-    <div class="card-body">
-        <p class="card-text">{{ item.content|safe|linebreaks|truncatewords:100 }}</p>
-        <a href="{{ item.get_absolute_url }}" class="btn btn-primary mb-3">Узнать больше...</a>
-        {% if item.user != request.user %}
-        {% if not vote_up %}
-        <form method="post" action="add_golos/">
-            {% csrf_token %}
-            <input type="hidden" name="golos" id="id_golos" value="{{ item.slug }}">
-            <button type="submit" class="btn btn-success">Проголосвать</button>
-        </form>
-        {% endif %}
-        {% endif %}
-    </div>
-    <div class="card-footer text-muted">
-        Опубликовано : {{ item.date|timesince }} назад.
-    </div>
-    <ul class="media-list">
-        {% render_xtdcomment_tree for item allow_flagging allow_feedback show_feedback %}
-    </ul>
-    {% render_comment_form for item %}
-
+    <div class="avtorPub">{{ item.user.get_full_name }}</div>
+    <div class="dataPub">{{ item.date|timesince }} назад</div>
+    <a href="{{ item.get_absolute_url }}" class="buttonPub">
+        <button>Подробнее</button>
+    </a>
 </div>
 {% endfor %}
-<nav aria-label="Page navigation example">
-    {% if page_obj.has_other_pages %}
-    <ul class="pagination justify-content-center">
-        {% if page_obj.has_previous %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        {% endif %}
-        {% for p in page_obj.paginator.page_range %}
-        {% if page_obj.number == p %}
-        <li class="page-item active"><a class="page-link" href="#">{{ p }}</a></li>
-        {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
-        <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
-        {% endif %}
-        {% endfor %}
-        {% if page_obj.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-        {% endif %}
-    </ul>
-    {% endif %}
-</nav>
-
-{% else %}
-<h1>Пока что идей нету(</h1>
-{% endif %}
 {% endblock %}

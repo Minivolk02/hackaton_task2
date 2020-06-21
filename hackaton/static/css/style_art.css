@@ -1,0 +1,306 @@
+.up_l_bar {
+    display: grid;
+    grid-template-areas:
+            'logo_bar_id'
+            'ph_bar_id';
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-area: up_l_bar;
+}
+
+
+.up_r_bar {
+    width: 100%;
+}
+
+
+.centr_l_bar_v {
+    position: absolute;
+    top: 35%;
+    display: grid;
+    grid-template-areas:
+            'ideas_bar_id'
+            'group_bar_id'
+            'add_bar_id'
+            'pr_bar_id';
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-area: centr_l_bar;
+    width: 5vw;
+}
+
+.b_l_bar {
+    display: grid;
+    grid-template-areas:
+            'bat_set_id';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-area: b_l_bar;
+}
+
+
+.l_bar {
+    display: grid;
+    grid-template-areas:
+            'up_l_bar'
+            'centr_l_bar'
+            'b_l_bar';
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    height: 100%;
+}
+
+
+.logo_bar {
+    width: 60%;
+    /*border-radius: 100px; /* Радиус скругления */
+    margin-top: 20%;
+
+}
+
+.ph_bar {
+    width: 100%;
+
+}
+.bar_center {
+    text-align: center;
+}
+
+
+
+#ph_bar_id {
+    overflow: hidden;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 100px; /* Радиус скругления */
+    margin-left: 20%;
+    margin-top: 20%;
+    grid-area: ph_bar_id;
+}
+#logo_bar_id {
+    grid-area: logo_bar_id;
+}
+
+#bat_set_id {
+    grid-area: bat_set_id;
+}
+
+#ideas_bar_id {
+    grid-area: ideas_bar_id;
+    width: 100%;
+    margin-top: 20%;
+}
+
+#group_bar_id {
+    grid-area: group_bar_id;
+    width: 100%;
+    margin-top: 20%;
+}
+
+#pr_bar_id {
+    grid-area: pr_bar_id;
+    width: 100%;
+    margin-top: 20%;
+}
+.ideas_bar {
+    width: 60%;
+}
+
+.group_bar {
+    width: 60%;
+}
+
+#add_bar_id {
+    grid-area: add_bar_id;
+    width: 100%;
+    margin-top: 20%;
+}
+
+
+.pr_bar {
+    width: 60%;
+}
+
+.add_bar {
+    width: 60%;
+}
+
+#bar_set_id {
+    margin-bottom: 25%;
+}
+
+#r_bar_id {
+    display: grid;
+    grid-template-areas:
+            'up_l_bar'
+            'centr_l_bar'
+            'b_l_bar';
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    height: 100%;
+}
+
+.yv_bar {
+    width: 60%;
+    /*border-radius: 100px; /* Радиус скругления */
+    margin-top: 25%;
+
+}
+
+#circle {
+    font-size: 5.5vw;
+    color: #76DC8C;
+    margin-top: -6.5vw;
+    margin-left: 1.7vw;
+}
+
+#count_yv {
+    font-size: 2vw;
+    color: #000000;
+    margin-top: -4.2vw;
+    margin-left: 2.8vw;
+}
+
+
+.user_str {
+    background-color: darkgrey;
+    width: 90vw;
+    height: 100%;
+
+    display: grid;
+    grid-template-areas:
+            'info_pr game_pr'
+            'info_pr project_pr';
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+}
+
+.info_pr {
+    background-color: #cccccc;
+    width: 45vw;
+    height: 92vh;
+    border-radius: 3vw;
+    margin-left: 3vw;
+    margin-right: 1.5vw;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    grid-area: info_pr;
+    display: grid;
+    grid-template-areas:
+            'ph_pr info_pr_id'
+            'osebe_pr osebe_pr';
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: auto 1fr;
+}
+
+#ph_pr {
+    margin-top: 2vh;
+    margin-left: 2vh;
+    height: 55vh;
+    grid-area: ph_pr;
+
+}
+
+#info_pr_id {
+    grid-area: info_pr_id;
+}
+
+#ph_pr_img {
+    height: 100%;
+    border-radius: 4vh;
+}
+#osebe_pr {
+    margin: 2vh;
+    background-color: #333333;
+    border-radius: 5vh;
+    grid-area: osebe_pr;
+}
+
+
+
+.project_pr {
+    background-color: #cccccc;
+    width: 35vw;
+    height: 58vh;
+    border-radius: 3vw;
+    margin-left: 1.5vw;
+    margin-right: 3vw;
+    margin-top: 2vh;
+    margin-bottom: 4vh;
+    grid-area: project_pr;
+}
+
+.game_pr {
+    background-color: #cccccc;
+    width: 35vw;
+    height:30vh;
+    border-radius: 3vw;
+    margin-left: 1.5vw;
+    margin-right: 3vw;
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+    grid-area: game_pr;
+}
+
+.game_p {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+            'pers_im game_status'
+            'pers_im point'
+            'pers_im money';
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: auto 1fr ;
+}
+
+#pers_im {
+    margin: 1.5vh;
+    height: 27vh;
+    width: auto;
+    grid-area:pers_im;
+}
+
+#pers_img {
+    height: 100%;
+    width: auto;
+    border-radius: 4vh;
+}
+
+#game_status {
+    width: 100%;
+    margin-top: 1vh;
+    grid-area:game_status;
+    margin-left: 1vw;
+}
+
+#money {
+    padding-top: 1.5vh;
+    background-color: gold;
+    height: 6vh;
+    border-radius: 4vh;
+    width: 18vw;
+    grid-area:money;
+    margin-top: 0.5vh;
+    margin-left: 1vh;
+    text-align: center;
+}
+#point {
+    padding-top: 1.5vh;
+    background-color: darksalmon;
+    height: 6vh;
+    border-radius: 4vh;
+    width: 18vw;
+    grid-area:point;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    text-align: center;
+}
+
+.game_st_z {
+    font-size: 7vh;
+}
+.game_t {
+    font-size: 4vh;
+}
+

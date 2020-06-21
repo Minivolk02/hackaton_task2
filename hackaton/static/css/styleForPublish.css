@@ -1,0 +1,85 @@
+#listContainerForPub{
+
+    width: 65%;
+    border-radius: 30px;
+    margin:2% auto;
+    background: #D7DEE9;
+    padding: 5%;
+}
+#mainContainer{
+    height: 99vh;
+    overflow: auto;
+}
+h1 {
+    font-size: 32px;
+    line-height: 33px;
+    margin: 1em 0 .6em 0;
+    font-weight: bold;
+    text-align: center;
+    color: #222222;
+    font-family: 'Hammersmith One', sans-serif;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    position: relative;
+    height: 5%;
+
+}
+
+h3 {
+    margin: 1em 0 0.5em 0;
+    color: #7C8793;
+    text-align: left;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Orienta', sans-serif;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+button{
+    border: none;
+}
+#lavelForLike{
+    color:#222222;
+}
+#check4, #check5{
+    margin-left: 28%;
+}
+
+#comentCont{
+    min-height:1000px;
+    width: 70%;
+    margin:2% auto;
+    background:#B8BDCE;
+    padding: 5%;
+    border-radius: 20px;
+}
+#comentCont{
+    #display:none;
+}
+
+.stat {
+    background-color: aliceblue;
+    width: 57vw;
+    height: 15vh;
+    margin-bottom: 2vh;
+    border-radius: 20px;
+    text-align: center;
+}
+
+#stat_z_id {
+    padding-top: 1.5vh;
+
+}
+#stat_inp {
+    margin-top: 2vh;
+    height: 5.5vh;
+    width: 15vw;
+}
+
+#stat_bt{
+    margin-top: 2vh;
+    height: 6vh;
+    width: 15vw;
+}

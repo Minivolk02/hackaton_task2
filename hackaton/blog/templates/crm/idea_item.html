@@ -1,29 +1,41 @@
 {% extends 'base.html' %}
-{% load comments comments_xtd %}
-{% block sidebar %}
-{% include 'inc/_sidebar.html' %}
-{% endblock %}
-
+{% load comments comments_xtd static vote %}
 {% block content %}
-{% if idea_item %}
-<div class="card mb-3">
-    <div class="card-header">
-        <h2 class="font-weight-bold">{{ idea_item.title }}</h2>
+<div id="listContainerForPub">
+    <h1>{{ idea_item.title }}</h1>
+    <h3>{{ idea_item.groups.title }} </h3>
+    <div>
+        {{ idea_item.content|safe }}
     </div>
-    <div class="card-body">
-        <div class="media">
-            <div class="media-body">
-                <p class="card-text">{{ idea_item.content|safe }}</p>
-            </div>
-        </div>
-
+    <h3 id="h3ForNamePub">{{ idea_item.user.get_full_name }} {{ idea_item.date }}</h3>
+    <div class="stat">
+        <p id="stat_z_id">
+            {{ idea_item.question }}
+        </p>
+        <input type="text" size="40" id="stat_inp">
+        <button id="stat_bt">Отправить!</button>
     </div>
-    <ul class="media-list">
-        {% render_xtdcomment_tree for idea_item allow_flagging allow_feedback show_feedback %}
-    </ul>
-    <div class="card-footer text-muted">
-        Опубликовано : {{ idea_item.date|timesince }} назад.
-    </div>
+    {% vote_exists idea_item request.user 0 as vote_up %}
+    {% if not vote_up %}
+    <form method="post" action="add_golos/">
+        {% csrf_token %}
+        <input type="hidden" name="golos" id="id_golos" value="{{ idea_item.slug }}">
+        <button id="check5" type="submit"><img src="{% static 'img/check.png' %}" width="30px"></button>
+        <label for="check5" id="lavelForLike">{{ idea_item.votes.count }}</label>
+        {% get_comment_count for idea_item as comment_count %}
+        <button id="check4" type="button"><img src="{% static 'img/trending-topic.png' %}" width="30px"></button>
+        <label for="check4" id="lavelForLike">{{ comment_count }}</label>
+    </form>
+    {% else %}
+    <button id="check5"><img src="{% static 'img/check.png' %}" width="30px"></button>
+    <label for="check5" id="lavelForLike">{{ idea_item.votes.count }}</label>
+    {% get_comment_count for idea_item as comment_count %}
+    <button id="check4"><img src="{% static 'img/trending-topic.png' %}" width="30px"></button>
+    <label for="check4" id="lavelForLike">{{ comment_count }}</label>
+</div>
+<div id="comentCont">
+    {% render_xtdcomment_tree for idea_item allow_flagging allow_feedback show_feedback %}
+    {% render_comment_form for idea_item %}
 </div>
 {% endif %}
 {% endblock %}

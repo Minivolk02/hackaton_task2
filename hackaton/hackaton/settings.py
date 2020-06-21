@@ -130,9 +130,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'hackaton/static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'hackaton/static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -146,7 +146,13 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-SITE_ID = 5
+SITE_ID = 6
+'''
+from django.contrib.sites.models import Site
+new_site = Site.objects.create(domain='foo.com', name='foo.com')
+print(new_site.id)
+
+'''
 
 COMMENTS_APP = 'django_comments_xtd'
 COMMENTS_XTD_MAX_THREAD_LEVEL = 1

@@ -23,10 +23,13 @@ class IdeaForm(forms.ModelForm):
 
 
 class CommentFormWithTitle(XtdCommentForm):
-    comment = forms.CharField(max_length=300, widget=forms.Textarea(attrs={'style': 'background-color: green;'}))
+    comment = forms.CharField(max_length=300, widget=forms.Textarea(attrs={'rows': '30'}))
 
     def get_comment_create_data(self, **kwargs):
         data = super(CommentFormWithTitle, self).get_comment_create_data()
-        print(data)
         data.update({'comment': self.cleaned_data['comment']})
         return data
+
+
+class SearchIdea(forms.Form):
+    search = forms.CharField(widget=forms.TextInput(attrs={'class': 'labelInLeftBar', 'placeholder': 'Поиск'}))

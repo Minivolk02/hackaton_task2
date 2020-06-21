@@ -13,6 +13,12 @@
         </ul>
     </div>
 
+    <form class="form-inline my-2 my-lg-0" method="post">
+        {% csrf_token %}
+        {{ form.search }}
+        <button class="btn btn-outline-success my-2 my-sm-0 ml-2" type="submit">Поиск</button>
+    </form>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         </ul>
@@ -20,7 +26,9 @@
         <a href="{% url 'user_login' %}" type="button" class="btn btn-danger mr-3">Войти</a>
         <a href="{% url 'user_register' %}" type="button" class="btn btn-success">Регистрация</a>
         {% else %}
-        <h3 style="color: #fff">{{ request.user.username }} | <a href="{% url 'user_logout' %}" type="button" class="btn btn-danger">Выйти</a> | <a href="{% url 'password_change' %}" type="button" class="btn btn-info">Сменить пароль</a></h3>
+        <h3 style="color: #fff">{{ request.user.username }} | <a href="{% url 'user_logout' %}" type="button"
+                                                                 class="btn btn-danger">Выйти</a> | <a
+                href="{% url 'password_change' %}" type="button" class="btn btn-info">Сменить пароль</a></h3>
         {% endif %}
     </div>
 </nav>
