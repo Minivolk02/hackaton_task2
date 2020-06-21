@@ -1,16 +1,16 @@
 # hackaton_task2
-pip install -r requirements.txt
+1. pip install -r requirements.txt
 
 
-python manage.py makemigrations
-python manage.py migrate
+2. python manage.py makemigrations
+3. python manage.py migrate
 
-python manage.py runserver
+4. python manage.py runserver
 
 
 Заходим на  http://127.0.0.1:8000
 
 для входа в админку введите команду:
-python manage.py createsuperuser
+5. python manage.py createsuperuser
 
 и для входа идем на http://127.0.0.1:8000/admin
